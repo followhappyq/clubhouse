@@ -1,8 +1,8 @@
-import React from 'react';
-import { BackButton } from '../../components/BackButton';
-import { Header } from '../../components/Header';
-import { Room } from '../../components/Room';
-import Axios from '../../core/axios';
+import React from "react";
+import { BackButton } from "../../components/BackButton";
+import { Header } from "../../components/Header";
+import { Room } from "../../components/Room";
+import Axios from "../../core/axios";
 
 export default function RoomPage({ room }) {
   return (
@@ -18,7 +18,7 @@ export default function RoomPage({ room }) {
 
 export const getServerSideProps = async (ctx) => {
   try {
-    const { data } = await Axios.get('/rooms.json');
+    const { data } = await Axios.get("/rooms.json");
     const roomId = ctx.query.id;
     const room = data.find((obj) => obj.id === roomId);
     return {
@@ -27,7 +27,7 @@ export const getServerSideProps = async (ctx) => {
       },
     };
   } catch (error) {
-    console.log('ERROR!');
+    console.log("ERROR!");
     return {
       props: {
         rooms: [],
